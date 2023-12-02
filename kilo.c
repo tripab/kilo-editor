@@ -218,7 +218,7 @@ void editorUpdateSyntax(erow *row) {
     }
 }
 
-int editorSyntaxToColor(int hl) {
+int editorSyntaxToColour(int hl) {
     switch (hl) {
         case HL_NUMBER:
             return 31;
@@ -591,9 +591,9 @@ void editorDrawRows(struct abuf *ab) {
                     }
                     abAppend(ab, &c[j], 1);
                 } else {
-                    int colour = editorSyntaxToColor(hl[j]);
+                    int colour = editorSyntaxToColour(hl[j]);
                     if (colour != current_colour) {
-                        colour = current_colour;
+                        current_colour = colour;
                         char buf[16];
                         int clen = snprintf(buf, sizeof(buf), "\x1b[%dm", colour);
                         abAppend(ab, buf, clen);
